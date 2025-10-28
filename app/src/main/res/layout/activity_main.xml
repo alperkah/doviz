@@ -5,40 +5,133 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logoIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/ic_currency_exchange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="8dp" />
 
     <TextView
         android:id="@+id/baslikTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Döviz Çevirici"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tlDolarButton"
+        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:elevation="8dp"
+        android:shadowColor="#40000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.835" />
+        app:layout_constraintTop_toBottomOf="@+id/logoIcon" />
 
-    <Button
-        android:id="@+id/tlDolarButton"
+    <TextView
+        android:id="@+id/subtitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:text="TL - DOLAR"
-        app:layout_constraintBottom_toTopOf="@+id/dolarTLButton"
+        android:layout_marginTop="8dp"
+        android:text="Hızlı ve Kolay Para Çevirme"
+        android:textSize="16sp"
+        android:textColor="#E0FFFFFF"
+        android:fontFamily="sans-serif-light"
+        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baslikTextView" />
 
-    <Button
-        android:id="@+id/dolarTLButton"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitleTextView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:background="@color/card_background">
+
+            <Button
+                android:id="@+id/tlDolarButton"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="TL → DOLAR"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/button_primary"
+                android:elevation="8dp"
+                android:stateListAnimator="@null"
+                android:fontFamily="sans-serif-medium"
+                android:drawableStart="@drawable/ic_lira"
+                android:drawablePadding="16dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="veya"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"
+                android:fontFamily="sans-serif-light" />
+
+            <Button
+                android:id="@+id/dolarTLButton"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="DOLAR → TL"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/button_secondary"
+                android:elevation="8dp"
+                android:stateListAnimator="@null"
+                android:fontFamily="sans-serif-medium"
+                android:drawableStart="@drawable/ic_dollar"
+                android:drawablePadding="16dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/footerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="280dp"
-        android:text="DOLAR - TL"
+        android:layout_marginBottom="32dp"
+        android:text="Güncel kurlarla anında çeviri"
+        android:textSize="14sp"
+        android:textColor="#C0FFFFFF"
+        android:fontFamily="sans-serif-light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

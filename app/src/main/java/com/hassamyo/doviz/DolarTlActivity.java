@@ -21,11 +21,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.text.DecimalFormat;
 
-public class TlDolarActivity extends AppCompatActivity {
+public class DolarTlActivity extends AppCompatActivity {
 
-    private EditText tlEditText;
+    private EditText dolarEditText;
     private Button donusturButton;
-    private TextView dolarTextView;
+    private TextView tlTextView;
     private TextView rateInfoTextView;
     private ImageView currencyIcon;
     private CardView inputCard;
@@ -38,7 +38,7 @@ public class TlDolarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_tl_dolar);
+        setContentView(R.layout.activity_dolar_tl);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -49,9 +49,9 @@ public class TlDolarActivity extends AppCompatActivity {
         apiService = new CurrencyApiService();
 
         // Initialize views
-        tlEditText = findViewById(R.id.tlEditText);
+        dolarEditText = findViewById(R.id.dolarEditText);
         donusturButton = findViewById(R.id.donusturButton);
-        dolarTextView = findViewById(R.id.dolarTextView);
+        tlTextView = findViewById(R.id.tlTextView);
         currencyIcon = findViewById(R.id.currencyIcon);
         inputCard = findViewById(R.id.inputCard);
         resultCard = findViewById(R.id.resultCard);
@@ -101,7 +101,7 @@ public class TlDolarActivity extends AppCompatActivity {
             @Override
             public void onError(String error) {
                 rateInfoTextView.setText("Güncel kur: 1$ = " + currentRate + "₺ (Varsayılan)");
-                Toast.makeText(TlDolarActivity.this,
+                Toast.makeText(DolarTlActivity.this,
                     "Kur güncellenemedi, varsayılan kur kullanılıyor",
                     Toast.LENGTH_SHORT).show();
             }
@@ -109,19 +109,19 @@ public class TlDolarActivity extends AppCompatActivity {
     }
 
     private void performConversion() {
-        String girilenTl = tlEditText.getText().toString().trim();
+        String girilenDolar = dolarEditText.getText().toString().trim();
 
-        if (TextUtils.isEmpty(girilenTl)) {
+        if (TextUtils.isEmpty(girilenDolar)) {
             Toast.makeText(this, "Lütfen bir miktar giriniz", Toast.LENGTH_SHORT).show();
             return;
         }
 
         try {
-            double girilenTLDouble = Double.parseDouble(girilenTl);
-            double donusturulmusDolar = girilenTLDouble / currentRate;
+            double girilenDolarDouble = Double.parseDouble(girilenDolar);
+            double donusturulmusTl = girilenDolarDouble * currentRate;
 
             DecimalFormat df = new DecimalFormat("#,##0.00");
-            dolarTextView.setText(df.format(donusturulmusDolar) + " $");
+            tlTextView.setText(df.format(donusturulmusTl) + " ₺");
 
             // Animate result
             resultCard.animate()
